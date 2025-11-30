@@ -54,14 +54,17 @@ body { padding-bottom: var(--ticker-height); }
 /* Contact custom margin removed to avoid negative visual offset */
 
 @layer utilities {
+  /* Apply clip-path only on medium+ screens (md: 768px) to avoid overlay issues on mobile */
+  @media (min-width: 768px) {
     .clip-path-custom {
       clip-path: polygon(0 0, 100% 0, 100% 98%, 75% 95%, 0 100%);
     }
     .clip-path-custom-2 {
-        clip-path: polygon(0 0, 100% 0, 100% 98%, 25% 95%, 0 100%);
-      }
+      clip-path: polygon(0 0, 100% 0, 100% 98%, 25% 95%, 0 100%);
+    }
     .clip-path-custom-3 {
-        clip-path: polygon(0 0, 100% 0, 100% 98%, 75% 96%, 0 100%);
-      }
+      clip-path: polygon(0 0, 100% 0, 100% 98%, 75% 96%, 0 100%);
+    }
+  }
   }
   

@@ -4,6 +4,9 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const toggleRef = useRef(null);
+  const menuRef = useRef(null);
+  const [menuPos, setMenuPos] = useState({ top: null, left: '1rem' });
   const [activeSection, setActiveSection] = useState("");
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -51,6 +54,29 @@ const Navbar = () => {
     { id: "contact", label: "Contact" },
   ];
 
+  // Compute menu position under the toggle to show it just under the icon
+  useEffect(() => {
+    if (!toggleRef.current) return;
+    const computePos = () => {
+      const rect = toggleRef.current.getBoundingClientRect();
+      const menuEl = menuRef.current;
+      const menuW = menuEl ? menuEl.offsetWidth : 224; // fallback width
+      const desiredLeft = rect.left + window.pageXOffset;
+      let left = desiredLeft;
+      if (desiredLeft + menuW > window.innerWidth) {
+        left = window.innerWidth - menuW - 8; // keep margin from right edge
+      }
+      setMenuPos({ top: rect.bottom + window.pageYOffset + 6 + 'px', left: left + 'px' });
+    };
+    computePos();
+    window.addEventListener('resize', computePos);
+    window.addEventListener('scroll', computePos);
+    return () => {
+      window.removeEventListener('resize', computePos);
+      window.removeEventListener('scroll', computePos);
+    };
+  }, [toggleRef, isOpen]);
+
   return (
     <nav
       className={`fixed top-0 w-full z-50 transition duration-300 px-[7vw] md:px-[7vw] lg:px-[20vw] ${
@@ -59,8 +85,21 @@ const Navbar = () => {
       ref={navRef}
     >
       <div className="text-white py-5 flex justify-between items-center">
-        {/* Logo */}
-        <div className="text-lg font-semibold cursor-pointer">
+        {/* Logo (clickable - acts like Home) */}
+        <div
+          className="text-lg font-semibold cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#8245ec]"
+          role="button"
+          tabIndex={0}
+          title="Go to Home"
+          aria-label="Go to Home"
+          onClick={() => handleMenuItemClick('about')}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              handleMenuItemClick('about');
+            }
+          }}
+        >
           <span className="text-[#8245ec]">&lt;</span>
           <span className="text-white">Abhishek</span>
           <span className="text-[#8245ec]">/</span>
@@ -105,7 +144,7 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Menu Icon */}
-        <div className="md:hidden">
+        <div className="md:hidden" ref={toggleRef}>
           {isOpen ? (
             <FiX
               className="text-3xl text-[#8245ec] cursor-pointer"
@@ -122,8 +161,12 @@ const Navbar = () => {
 
       {/* Mobile Menu Items */}
       {isOpen && (
-        <div className="absolute top-16 left-1/2 transform -translate-x-1/2 w-4/5 bg-[#050414] bg-opacity-50 backdrop-filter backdrop-blur-lg z-50 rounded-lg shadow-lg md:hidden">
-          <ul className="flex flex-col items-center space-y-4 py-4 text-gray-300">
+        <div
+          ref={menuRef}
+          className="absolute w-auto max-w-[85vw] bg-[#050414] bg-opacity-90 z-50 rounded-lg shadow-lg md:hidden transform transition-transform duration-300 origin-top-left"
+          style={{ top: menuPos.top || undefined, left: menuPos.left }}
+        >
+          <ul className="flex flex-col items-start space-y-4 py-4 text-gray-300 px-4">
             {menuItems.map((item) => (
               <li
                 key={item.id}
