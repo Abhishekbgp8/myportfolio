@@ -131,7 +131,7 @@ export const SkillsInfo = [
       id: 1,
       title: "Product Recommendation System",
       description:
-        "A full-stack quiz-based platform designed for GATE/UGC NET students to practice previous year questions and create customized tests. The platform offers comprehensive profile stats and detailed results, helping students track and improve their preparation journey effectively.",
+        "Built a recommendation engine using a rule-based approach to match users with relevant products. The system analyzes product categories, features, and user interactions to generate suggestions. Implemented filtering logic, similarity matching, and a clean UI/API to deliver real-time recommendations.",
       image: csprepLogo,
       tags: ["React JS", "Node.js", "MongoDB", "Express", "HTML", "CSS", "JavaScript"],
       github: "https://github.com/Abhishekbgp8/ProductRecommendationSystem.git",
@@ -140,7 +140,7 @@ export const SkillsInfo = [
       id: 2,
       title: "Smart Health Monitoring System",
       description:
-        "A React-based web application that provides movie recommendations based on different criteria, such as genres, user preferences, and popular trends. The intuitive design and smooth experience make it a go-to app for movie enthusiasts.",
+        "Smart Health Monitoring & Healthcare Management System (Blockchain-Based) Developed a secure healthcare platform that allows users to monitor their health, book doctor appointments, order medicines, and access medical reports, all secured using blockchain for tamper-proof data management.",
       image: movierecLogo,
       tags: ["API", "HTML", "CSS", "JavaScript","python"],
       github: "https://github.com/Abhishekbgp8"
@@ -149,10 +149,10 @@ export const SkillsInfo = [
       id: 3,
       title: "Portfolio Website",
       description:
-        "An efficient and customizable NPM package for validating email addresses. Built using React.js and Node.js, it provides robust validation features to help developers ensure that email inputs meet required formats and standards.",
+        "A modern and responsive portfolio website built with React.js, designed to display my projects, skills, and experience in a clean and professional way. It features a user-friendly interface, smooth navigation, and reusable components that make the site easy to update and maintain. The layout is fully responsive, ensuring a consistent experience across mobile, tablet, and desktop devices.",
       image: npmLogo,
       tags: ["React JS", "Node.js","JavaScript",],
-      github: "https://github.com/abhishekbgp8"
+      github: "https://github.com/Abhishekbgp8/myportfolio.git"
     },
   ];  
 
