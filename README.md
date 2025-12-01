@@ -1,5 +1,7 @@
 # 🌐 Animated Portfolio Website
 
+https://abhishekbgp.netlify.app/
+
 ## 🛠️ Tech Stack
 
 - ⚛️ React.js
@@ -19,7 +21,7 @@
 ### 1. Clone the Repo
 
 ```bash
-git clone [https://github.com/codingmastr/abhishekbgp8]
+git clone [https://github.com/abhishekbgp8]
 cd your-repo-name
 ```
 
