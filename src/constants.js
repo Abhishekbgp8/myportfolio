@@ -125,7 +125,7 @@ export const SkillsInfo = [
         "Number Guessing Game – An interactive game built with HTML, CSS, and JavaScript where players guess a randomly generated number. The game provides instant feedback (“Too High”, “Too Low”, “Correct!”) and features a clean, user-friendly interface, demonstrating DOM manipulation, event handling, and basic game logic.",
       image: githubdetLogo,
       tags: ["HTML", "CSS", "JavaScript", "Python"],
-      github: "https://github.com/Abhishekbgp8/Number-Gassing-Game.git",
+      github: "https://github.com/Abhishekbgp8/Number-Guessing-Game.git",
     },
     {
       id: 1,
